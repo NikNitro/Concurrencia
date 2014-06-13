@@ -43,11 +43,25 @@ public class WorkerMezcla extends SwingWorker<List<Integer>, Integer>{
 				index2++;
 			} else {
 				listaMezc.add(lista1.get(index1));
+				
 				index1++;
 				
 			}
 			
-		}
+			// El porcentaje es por 100 y partido el doble del tamaño porque los dos son iguales.
+			// Esto es lo mismo simplificado.
+			int porcentaje = (i*50)/(lista1.size());
+			panel.setBarra(porcentaje);
+			
+			// El wait es por si quiero ver más detenidamente como aumenta la barra. 
+			// Para poder usarlo es necesario añadir synchronized entre el private y el List<Integer>
+/*			try {
+				wait(200);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+*/		}
 		return listaMezc;
 	}
 	
@@ -68,8 +82,9 @@ public class WorkerMezcla extends SwingWorker<List<Integer>, Integer>{
 	public void done() {
 		try {
 			panel.cambiaTexto(2, toString(get()));
-
+			
 			panel.cambiaEtiqueta("Mezcla completada");
+			//Si la división no es exacta, la barra no quedaría totalmente llena.
 			panel.setBarra(100);
 		} catch (InterruptedException | ExecutionException e) {
 			// TODO Auto-generated catch block

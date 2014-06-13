@@ -18,8 +18,8 @@ public class Controlador implements ActionListener{
 		String mensaje = e.getActionCommand();
 		 
 		if(mensaje.equals("Intro")) {
-			int tam = panel.getTamano();
 			inicializacionIntro();
+			int tam = panel.getTamano();
 			// 0 Para la primera lista y 1 para la segunda
 			Worker wok = new Worker(tam, 0, panel);
 			Worker wok2 = new Worker(tam, 1, panel);
@@ -30,7 +30,7 @@ public class Controlador implements ActionListener{
 				List<Integer> l1 = wok.get();
 				List<Integer> l2 = wok2.get();
 				panel.cambiaEtiqueta("Mezclando Listas");
-				panel.setBarra(50);
+//				panel.setBarra(50);
 				
 				WorkerMezcla wm = new WorkerMezcla(l1, l2, panel);
 				wm.execute();
