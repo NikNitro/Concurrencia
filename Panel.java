@@ -1,17 +1,11 @@
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.ScrollPane;
+import java.awt.*;
 import java.awt.event.ActionListener;
-
-import javax.print.attribute.standard.JobPriority;
 import javax.swing.*;
 
 
 public class Panel extends  JPanel{
+	private static final long serialVersionUID = -7791811179827965902L;
+	
 	private JPanel panel;
 	private final JLabel longitud = new JLabel("Longitud de las listas: ");
 	private final JLabel lista1 = new JLabel("Lista 1");
@@ -110,18 +104,7 @@ public class Panel extends  JPanel{
 	public int getTamano() {
 		return Integer.parseInt(tamano.getText());
 	}
-/*	
-	public void setListas(String s1, String s2, String s3) {
-		list1.setText(s1);
-		list2.setText(s2);
-		listMezc.setText(s3);
-		
-		//Trololoo
-		barraProg.setValue(100);
-		barraProg.setString("100%");
-		//
-	}
-	*/
+
 	public void cambiaEtiqueta(String std) {
 		estado.setText(std);
 	}

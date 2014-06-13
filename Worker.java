@@ -1,7 +1,4 @@
 import java.util.*;
-import java.util.concurrent.ExecutionException;
-
-import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 
 
@@ -20,36 +17,30 @@ public class Worker extends SwingWorker<List<Integer>, Integer>{
 	protected List<Integer> doInBackground() throws Exception {
 		// TODO Auto-generated method stub
 		
-		return crearLista();
-	}
-	
-	private List<Integer> crearLista() {
 		List<Integer> list = new ArrayList<Integer>();
 		Random rnd = new Random();
 		for(int i = 0; i < n; i++) {
-			if(i==0)
-				list.add(rnd.nextInt(30));
-			else
-				list.add(list.get(i-1) +rnd.nextInt(25));
+			int aux = rnd.nextInt(30);
+			if(i!=0)
+				aux = list.get(i-1) + aux;
+			
+			list.add(aux);
+			panel.cambiaTexto(lista, panel.getListaN(lista) + toString(i,aux));
 		}
 		return list;
 	}
+
 	
-	public String toString(List<Integer> list) {
+	public String toString(int index, int value) {
 		String std = "";
-		int j = 0;
-		for(int i = 0; i < list.size(); i++) {
-			std = std + "("+i+":"+list.get(i)+"), ";
-			j++;
-			if(j==5) {
-				j=0;
-				std = std + "\n";
-			}
-		}
+		  std ="("+index+":"+value+"), ";
+			if(index%5 == 4)
+				std =  std + "\n";
 		return std;
 	}
 	
-	public void done() {
+	
+/*	public void done() {
 		try {
 			
 			panel.cambiaTexto(lista, toString(get()));
@@ -57,6 +48,6 @@ public class Worker extends SwingWorker<List<Integer>, Integer>{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 }

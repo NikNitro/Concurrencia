@@ -8,8 +8,6 @@ public class WorkerMezcla extends SwingWorker<List<Integer>, Integer>{
 
 	private List<Integer> lista1;
 	private List<Integer> lista2;
-	private String l1;
-	private String l2;
 	private Panel panel;
 	
 	public WorkerMezcla(List<Integer> l1, List<Integer> l2, Panel panel) {
