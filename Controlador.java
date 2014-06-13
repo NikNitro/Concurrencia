@@ -26,7 +26,7 @@ public class Controlador implements ActionListener{
 			wok.execute();
 			wok2.execute();
 			while(!(wok.isDone() && wok2.isDone()));
-
+ 
 			panel.cambiaEtiqueta("Mezclando Listas");
 			panel.setBarra(50);
 			
