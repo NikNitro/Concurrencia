@@ -10,6 +10,7 @@ public class WorkerMezcla extends SwingWorker<List<Integer>, Integer>{
 	private List<Integer> lista2;
 	private Panel panel;
 	
+	
 	public WorkerMezcla(List<Integer> l1, List<Integer> l2, Panel panel) {
 		this.panel = panel;
 		lista1 = l1;
@@ -92,4 +93,8 @@ public class WorkerMezcla extends SwingWorker<List<Integer>, Integer>{
 		}
 	}
 	
+
+	protected void process(List<Integer> chunks) {
+		super.process(chunks);
+	}
 }

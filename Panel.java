@@ -24,7 +24,7 @@ public class Panel extends  JPanel{
 	
 	public Panel(JFrame ventana) {
 		
-		barraProg = new JProgressBar();
+		barraProg = new JProgressBar(0, 100);
 		estado = new JLabel();
 		tamano = new JTextField();
 		list1 = new JTextArea();

@@ -25,6 +25,7 @@ public class Worker extends SwingWorker<List<Integer>, Integer>{
 				aux = list.get(i-1) + aux;
 			
 			list.add(aux);
+			publish(aux);
 			panel.cambiaTexto(lista, panel.getListaN(lista) + toString(i,aux));
 		}
 		return list;

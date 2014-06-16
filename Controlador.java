@@ -30,7 +30,6 @@ public class Controlador implements ActionListener{
 				List<Integer> l1 = wok.get();
 				List<Integer> l2 = wok2.get();
 				panel.cambiaEtiqueta("Mezclando Listas");
-//				panel.setBarra(50);
 				
 				WorkerMezcla wm = new WorkerMezcla(l1, l2, panel);
 				wm.execute();
