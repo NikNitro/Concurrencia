@@ -2,14 +2,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-
+import mensajes.*;
 
 public class Controlador implements ActionListener{
 	
 	private Panel panel;
+	private Channel<Elemento> c1;
+	private Channel<Elemento> c2;
 
 	public Controlador(Panel pn) {
 		panel = pn;
+
+		 c1 = new Channel<Elemento>();
+		 c2 = new Channel<Elemento>();
 	}
 	
 	@Override
@@ -18,37 +23,35 @@ public class Controlador implements ActionListener{
 		String mensaje = e.getActionCommand();
 		 
 		if(mensaje.equals("Intro")) {
-			inicializacionIntro();
+			panel.habilitarInicio();
+			panel.cambiaEtiqueta("Mezclando");
+//			inicializacionIntro();
 			int tam = panel.getTamano();
-			// 0 Para la primera lista y 1 para la segunda
-			Worker wok = new Worker(tam, 0, panel);
-			Worker wok2 = new Worker(tam, 1, panel);
-			wok.execute();
-			wok2.execute();
-
-			try {
-				List<Integer> l1 = wok.get();
-				List<Integer> l2 = wok2.get();
-				panel.cambiaEtiqueta("Mezclando Listas");
+			if(tam>0) {
 				
-				WorkerMezcla wm = new WorkerMezcla(l1, l2, panel);
+				// 0 Para la primera lista y 1 para la segunda
+				Worker wok = new Worker(tam, 0, panel, c1);
+				Worker wok2 = new Worker(tam, 1, panel, c2);
+				
+				WorkerMezcla wm = new WorkerMezcla(panel, c1, c2, tam);
+//				System.out.println("Ejecutando");
+				wok.execute();
+				wok2.execute();
+				
 				wm.execute();
-			} catch (InterruptedException | ExecutionException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+//				System.out.println("Tras Ejecutar");
 			}
-			
-			
+
 		}
 		
 	}
 	
-	private void inicializacionIntro() {
+	/*private void inicializacionIntro() {
 		panel.cambiaEtiqueta("Creando Listas");
 		panel.setBarra(0);
 		panel.cambiaTexto(0, "");
 		panel.cambiaTexto(1, "");
 		panel.cambiaTexto(2, "");
-	}
+	}*/
 
 }

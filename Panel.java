@@ -89,9 +89,9 @@ public class Panel extends  JPanel{
 		ventana.pack();
 	}
 	
-	private void habilitarInicio() {
+	public void habilitarInicio() {
 		estado.setText("Preparado");
-		tamano.setText("0");
+//		tamano.setText("0");
 		list1.setText("");
 		list2.setText("");
 		listMezcAux.setText("");
@@ -112,11 +112,11 @@ public class Panel extends  JPanel{
 	// 0 Para la primera lista, 1 para la segunda y 2 para la de mezcla
 	public void cambiaTexto(int i, String std) {
 		if(i==0)
-			list1.setText(std);
+			list1.append(std);
 		else if (i==1)
-			list2.setText(std); 
+			list2.append(std); 
 		else if (i==2)
-			listMezcAux.setText(std); 
+			listMezcAux.append(std); 
 		else 
 			throw new NullPointerException("Lista inexistente.\nPor favor elija la 0, la 1 o la 2") ;
 
@@ -141,7 +141,7 @@ public class Panel extends  JPanel{
 			return list1.getText();
 		else if(n==1) 
 			return list2.getText();
-		else
+		else 
 			return null;
 	}
 }
